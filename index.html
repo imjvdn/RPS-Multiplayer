@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissors</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="style/text" href="main.js" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <h1>
+        <i class="fas fa-hand-rock"></i>
+        <i class="fas fa-hand-paper"></i> <i class="fas fa-hand-scissors"></i>
+      </h1>
+    </div>
+    <div class="tron">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1>What do you choose?</h1>
+          <br>
+          <div class="button-row">
+            <button class="rock btn">Rock</button>
+            <button class="paper btn">Paper</button>
+            <button class="scissors btn">Scissors</button>
+          </div>
+          <br>
+          <div class="game-message-placement">
+            <div id="game-message">
+            </div>
+          </div>
+          <br>
+          <div class="scoreboard-placement">
+            <div id="scoreboard">
+              <p class="scoreboard-row" id="playerWins"><strong>Your Victories: </strong><span id="wins">0</span></p>
+              <p class="scoreboard-row" id="playerDraws"><strong>Total Draws:  </strong><span id="draws">0</span></p>
+              <p class="scoreboard-row" id="playerLosses"><strong>Your defeats: </strong><span id="losses">0</span></p>
+            </div>
+          </div>
+          <br>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      Copyright © jvdn
+    </div>
+  </body>
+</html>

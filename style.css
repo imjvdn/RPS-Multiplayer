@@ -1,0 +1,19 @@
+.header h1 {
+  text-align: center;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+.tron {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+.scoreboard-placement,
+.container,
+p {
+  text-align: center;
+}
