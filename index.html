@@ -4,18 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="main.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
     <link
       href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="style/text" href="main.js" />
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
-    />
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+  />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="header">
@@ -39,21 +37,47 @@
             <div id="game-message">
             </div>
           </div>
-          <br>
           <div class="scoreboard-placement">
             <div id="scoreboard">
-              <p class="scoreboard-row" id="playerWins"><strong>Your Victories: </strong><span id="wins">0</span></p>
-              <p class="scoreboard-row" id="playerDraws"><strong>Total Draws:  </strong><span id="draws">0</span></p>
-              <p class="scoreboard-row" id="playerLosses"><strong>Your defeats: </strong><span id="losses">0</span></p>
+              <p class="scoreboard-row" id="playerWins"><strong>Victories: </strong><span id="wins">0</span></p>
+              <p class="scoreboard-row" id="playerDraws"><strong>Draws:  </strong><span id="draws">0</span></p>
+              <p class="scoreboard-row" id="playerLosses"><strong>Defeats: </strong><span id="losses">0</span></p>
             </div>
           </div>
-          <br>
         </div>
+        <p id="reset-scores">Reset</p>
         </div>
       </div>
     </div>
     <div class="footer">
       Copyright © jvdn
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script type="text/javascript" src="main.js"></script>
+
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  
+  var firebaseConfig = {
+    apiKey: "AIzaSyAIw-GJzoBQY6DwJ8zCxJ1qdlDjOHJpUAs",
+    authDomain: "rps-multiplayer-f1547.firebaseapp.com",
+    databaseURL: "https://rps-multiplayer-f1547.firebaseio.com",
+    projectId: "rps-multiplayer-f1547",
+    storageBucket: "rps-multiplayer-f1547.appspot.com",
+    messagingSenderId: "896448815491",
+    appId: "1:896448815491:web:90f259c72d517cabaf16b6"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  var playerWin = 0;
+  var aiWin = 0;
+  var draws = 0;
+</script>
   </body>
 </html>

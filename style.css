@@ -7,6 +7,7 @@
   bottom: 0;
   width: 100%;
   text-align: center;
+  margin-bottom: 3px;
 }
 .tron {
   margin-left: 40px;
@@ -16,4 +17,79 @@
 .container,
 p {
   text-align: center;
+}
+
+.button-row {
+  text-align: center;
+  margin: 0px auto;
+}
+
+.btn {
+  font-size: 24px;
+  padding: 20px 25px;
+  width: 150px;
+  margin: 0px 10px 0px 10px;
+  background-color: black;
+  border-radius: 3px;
+}
+
+.game-message-placement {
+  text-align: center;
+  width: 300px;
+  margin: 50px auto 0px;
+}
+
+#game-message {
+  font-size: 50px;
+  height: 185px;
+}
+
+.game-won {
+  background-color: green;
+  color: white;
+  border-radius: 10px;
+}
+
+.game-draw {
+  background-color: lightgrey;
+  color: #545454;
+  border-radius: 10px;
+}
+
+.game-lose {
+  background-color: red;
+  border-radius: 10px;
+  color: white;
+}
+
+.computer-message {
+  font-size: 16px;
+}
+
+.scoreboard-placement {
+  margin: 0px 15px 0px 15px;
+  border-top: 1px solid lightgrey;
+  text-align: center;
+}
+
+.scoreboard-row {
+  font-size: 18px;
+  display: inline-block;
+}
+
+#playerWins {
+  margin-right: 40px;
+}
+
+#playerLosses {
+  margin-left: 40px;
+}
+
+#reset-scores {
+  text-align: center;
+  margin: 0px auto;
+  width: 100px;
+  color: rgb(255, 255, 255);
+  text-decoration: underline;
+  cursor: pointer;
 }
