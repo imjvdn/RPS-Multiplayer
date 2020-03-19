@@ -10,9 +10,9 @@
       rel="stylesheet"
     />
     <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
-  />
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -26,80 +26,114 @@
       <div class="jumbotron jumbotron-fluid">
         <div class="container">
           <h1>What do you choose?</h1>
-          <br>
+          <br />
           <div class="button-row">
-            <button id="rock-btn" class="rock btn">Rock</button>
-            <button id="paper-btn" class="paper btn">Paper</button>
-            <button id="scissors-btn" class="scissors btn">Scissors</button>
+            <button id="rock-button" class="rock btn">Rock</button>
+            <button id="paper-button" class="paper btn">Paper</button>
+            <button id="scissors-button" class="scissors btn">Scissors</button>
           </div>
-          <br>
+          <br />
           <div class="game-message-placement">
-            <div id="game-message">
-            </div>
+            <div id="game-message"></div>
           </div>
           <div class="scoreboard-placement">
             <div id="scoreboard">
-              <p class="scoreboard-row" id="playerWins"><strong>Victories: </strong><span id="wins">0</span></p>
-              <p class="scoreboard-row" id="playerDraws"><strong>Draws:  </strong><span id="draws">0</span></p>
-              <p class="scoreboard-row" id="playerLosses"><strong>Defeats: </strong><span id="losses">0</span></p>
+              <p class="scoreboard-row" id="playerWins">
+                <strong>Victories: </strong><span id="wins">0</span>
+              </p>
+              <p class="scoreboard-row" id="playerDraws">
+                <strong>Draws: </strong><span id="draws">0</span>
+              </p>
+              <p class="scoreboard-row" id="playerLosses">
+                <strong>Defeats: </strong><span id="losses">0</span>
+              </p>
             </div>
           </div>
         </div>
         <p id="reset-scores">Reset</p>
-        </div>
       </div>
     </div>
+
     <div class="footer">
       Copyright © jvdn
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="main.js"></script>
 
-      <!-- The core Firebase JS SDK is always required and must be listed first -->
-      <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+    <!-- Specific Firebase products we want (Database) -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
+    <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 
-<script>
-  
-  var firebaseConfig = {
-    apiKey: "AIzaSyAIw-GJzoBQY6DwJ8zCxJ1qdlDjOHJpUAs",
-    authDomain: "rps-multiplayer-f1547.firebaseapp.com",
-    databaseURL: "https://rps-multiplayer-f1547.firebaseio.com",
-    projectId: "rps-multiplayer-f1547",
-    storageBucket: "rps-multiplayer-f1547.appspot.com",
-    messagingSenderId: "896448815491",
-    appId: "1:896448815491:web:90f259c72d517cabaf16b6"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+    <script>
+      var config = {
+        apiKey: 'AIzaSyAIw-GJzoBQY6DwJ8zCxJ1qdlDjOHJpUAs',
+        authDomain: 'rps-multiplayer-f1547.firebaseapp.com',
+        databaseURL: 'https://rps-multiplayer-f1547.firebaseio.com',
+        projectId: 'rps-multiplayer-f1547',
+        storageBucket: 'rps-multiplayer-f1547.appspot.com',
+        messagingSenderId: '896448815491',
+        appId: '1:896448815491:web:90f259c72d517cabaf16b6'
+      };
+      // Initialize Firebase
+      firebase.initializeApp(config);
 
-  var playerWin = 0;
-  var aiWin = 0;
-  var draws = 0;
-  var clickCounter = 0;
-
-  $("#click-button").on("click", function() {
-      clickCounter++;
-
-      database.ref().set({
-        clickCount: clickCounter
+      var database = firebase.database();
+      var clickCounter = 0;
+      var playerWins = 0;
+      var playerDraws = 0;
+      var playerLosses = 0;
+      var updatefirebase = function() {
+        database.ref().set({
+          wins: playerWin,
+          losses: aiWin,
+          draws: draws
+        });
+      };
+      $('#scissors-button').on('click', function(event) {
+        if (!clickCounter) clickCounter = 0;
+        event.preventDefault;
+        clickCounter++;
+        console.log();
       });
-    });
 
-    // MAIN PROCESS + INITIAL CODE
-    // --------------------------------------------------------------------------------
+      $('#paper-button').on('click', function() {
+        if (!clickCounter) clickCounter = 0;
+        clickCounter++;
+        console.log();
+      });
 
-    database.ref().on("value", function(snapshot) {
-      console.log(snapshot.val());
+      database.ref().on(
+        'value',
+        function(snapshot) {
+          console.log(snapshot.val());
 
-      clickCounter = snapshot.val().clickCount;
+          draws = snapshot.val().draws;
+          losses = snapshot.val().losses;
+          wins = snapshot.val().wins;
 
-      $("#click-value").text(snapshot.val().clickCount);
-    }, function(errorObject) {
-      console.log("The read failed: " + errorObject.code);
-    });
-</script>
+          $('#wins').text(wins);
+          $('#losses').text(losses);
+          $('#draws').text(draws);
+        },
+        function(errorObject) {
+          console.log('The read failed: ' + errorObject.code);
+        }
+      );
+
+      $('#rock-button').on('click', function() {
+        if (!clickCounter) clickCounter = 0;
+        clickCounter++;
+        console.log();
+      });
+
+      $('#click-count').on('click', function() {
+        clickCounter++;
+        console.log();
+      });
+    </script>
   </body>
 </html>

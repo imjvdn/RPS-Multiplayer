@@ -51,11 +51,13 @@ $('.rock').click(function() {
         .fadeIn(300);
 
       playerWin++;
+
       $('#wins')
         .html('')
         .append(playerWin);
     });
   }
+  updatefirebase();
 });
 
 $('.paper').click(function() {
@@ -108,6 +110,7 @@ $('.paper').click(function() {
         .append(aiWin);
     });
   }
+  updatefirebase();
 });
 
 $('.scissors').click(function() {
@@ -160,6 +163,7 @@ $('.scissors').click(function() {
         .append(aiWin);
     });
   }
+  updatefirebase();
 });
 
 $('#reset-scores').click(function() {
